@@ -80,8 +80,10 @@ class GfQuath
     }
 
     /// Construct from GfQuatd.
+    GF_API
     explicit GfQuath(class GfQuatd const &other);
     /// Construct from GfQuatf.
+    GF_API
     explicit GfQuath(class GfQuatf const &other);
 
     /// Return the identity quaternion, with real coefficient 1 and an
