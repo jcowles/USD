@@ -44,7 +44,7 @@ find_package(DoubleConversion REQUIRED)
 
 # --TBB
 # Debug is the default in Release for some bizarro reason, turn it off.
-set(TBB_USE_DEBUG_BUILD OFF)
+set(TBB_USE_DEBUG_BUILD ON)
 find_package(TBB REQUIRED)
 
 # --OpenEXR
