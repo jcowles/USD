@@ -57,8 +57,8 @@ int main()
     int status;
 
     assert(childPid == wait(&status));
-#endif
     assert(status != 0);
+#endif
 
     return 0;
 }
