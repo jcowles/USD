@@ -166,25 +166,23 @@ bool _Apply(const GusdStageEdit& self, const object& obj)
 #if (defined(_MSC_VER) && _MSC_VER == 1900)
 namespace boost
 {
-    PXR_NAMESPACE_OPEN_SCOPE
 
     template <>
-    class GusdStageBasicEdit const volatile * get_pointer<
-        class GusdStageBasicEdit const volatile >
-        (class GusdStageBasicEdit const volatile *c)
+    class pxr::GusdStageBasicEdit const volatile * get_pointer<
+        class pxr::GusdStageBasicEdit const volatile >
+        (class pxr::GusdStageBasicEdit const volatile *c)
     {
         return c;
     }
 
     template <>
-    class GusdStageEdit const volatile * get_pointer<
-        class GusdStageEdit const volatile >
-        (class GusdStageEdit const volatile *c)
+    class pxr::GusdStageEdit const volatile * get_pointer<
+        class pxr::GusdStageEdit const volatile >
+        (class pxr::GusdStageEdit const volatile *c)
     {
         return c;
     }
 
-    PXR_NAMESPACE_CLOSE_SCOPE
 }
 #endif
 
