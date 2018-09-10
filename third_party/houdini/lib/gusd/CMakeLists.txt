@@ -3,6 +3,25 @@ set(PXR_PACKAGE gusd)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${HOUDINI_DEFINITIONS}")
 
+if (UNIX)
+    set(HOUDINI_LIB_NAMES
+        ${HOUDINI_UI_LIBRARY}
+        ${HOUDINI_OPZ_LIBRARY}
+        ${HOUDINI_OP3_LIBRARY}
+        ${HOUDINI_OP2_LIBRARY}
+        ${HOUDINI_OP1_LIBRARY}
+        ${HOUDINI_SIM_LIBRARY}
+        ${HOUDINI_GEO_LIBRARY}
+        ${HOUDINI_PRM_LIBRARY}
+        ${HOUDINI_UT_LIBRARY})
+elseif(WIN32)
+    # This is a hack because the library names on Windows don't match, and for
+    # Windows, we have a higher level CMakeLists.txt that links in all the
+    # Houdini libraries always
+    set(HOUDINI_LIB_NAMES "")
+endif()
+
+
 pxr_shared_library(${PXR_PACKAGE}
     LIBRARIES
         ar 
@@ -16,15 +35,7 @@ pxr_shared_library(${PXR_PACKAGE}
         usdUtils
         ${Boost_FILESYSTEM_LIBRARY}
         ${Boost_SYSTEM_LIBRARY}
-        ${HOUDINI_UI_LIBRARY}
-        ${HOUDINI_OPZ_LIBRARY}
-        ${HOUDINI_OP3_LIBRARY}
-        ${HOUDINI_OP2_LIBRARY}
-        ${HOUDINI_OP1_LIBRARY}
-        ${HOUDINI_SIM_LIBRARY}
-        ${HOUDINI_GEO_LIBRARY}
-        ${HOUDINI_PRM_LIBRARY}
-        ${HOUDINI_UT_LIBRARY}
+        ${HOUDINI_LIB_NAMES}
 
     INCLUDE_DIRS
         ${HOUDINI_INCLUDE_DIRS}
