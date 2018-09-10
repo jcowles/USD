@@ -160,6 +160,26 @@ bool _Apply(const GusdStageEdit& self, const object& obj)
 
 } // namespace
 
+//
+// Special case for MSVC2015 build issue.
+//
+#if (defined(_MSC_VER) && _MSC_VER == 1900)
+namespace boost
+{
+    template <>
+    class pxrInternal_v0_18__pxrReserved__::GusdStageBasicEdit const volatile * get_pointer<class pxrInternal_v0_18__pxrReserved__::GusdStageBasicEdit const volatile >(class pxrInternal_v0_18__pxrReserved__::GusdStageBasicEdit const volatile *c)
+    {
+        return c;
+    }
+
+    template <>
+    class pxrInternal_v0_18__pxrReserved__::GusdStageEdit const volatile * get_pointer<class pxrInternal_v0_18__pxrReserved__::GusdStageEdit const volatile >(class pxrInternal_v0_18__pxrReserved__::GusdStageEdit const volatile *c)
+    
+    {
+        return c;
+    }
+}
+#endif
 
 void wrapGusdStageEdit()
 {

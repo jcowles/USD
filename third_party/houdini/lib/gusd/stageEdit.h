@@ -65,9 +65,17 @@ public:
                           UT_ErrorSeverity sev=UT_ERROR_ABORT) const
                     { return true; }
     
+#if (defined(_MSC_VER) && _MSC_VER == 1900)
+    virtual size_t  GetHash() const { return 0; }
+#else
     virtual size_t  GetHash() const = 0;
+#endif
 
+#if (defined(_MSC_VER) && _MSC_VER == 1900)
+    virtual bool    operator==(const GusdStageEdit& o) const { return false; }
+#else
     virtual bool    operator==(const GusdStageEdit& o) const = 0;
+#endif
 
     bool            operator!=(const GusdStageEdit& o) const
                     { return !(*this == o); }
